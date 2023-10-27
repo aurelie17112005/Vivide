@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nom du Produit</title>
+    <!-- Lien vers le fichier de style produit.css -->
+    <link rel="stylesheet" href="produit.css">
+    <!-- Lien vers le fichier de style header.css -->
+    <link rel="stylesheet" type="text/css" href="header.css">
+    <!-- Lien vers le fichier JavaScript header.js, avec l'attribut "defer" pour un chargement asynchrone -->
+    <script src="header.js" defer></script>
+</head>
+<body>
+    <!-- Division pour le contenu du header -->
+    <div id="header"></div>
+
+    <!-- Section du produit -->
+    <div class="product">
+        <div class="container">
+            <!-- Élément carrousel -->
+            <div class="carousel">
+                <!-- Conteneur interne pour les diapositives -->
+                <div class="carousel-inner">
+                    <!-- Première diapositive -->
+                    <div class="slide">
+                        <!-- Image de la première diapositive -->
+                        <img src="images/image_1.png" alt="Image 1">
+                    </div>
+                    <!-- ... (diapositives suivantes) -->
+                </div>
+                <!-- Conteneur pour les boutons de navigation -->
+                <div class="carousel-controls">
+                    <!-- Bouton pour passer à la diapositive précédente -->
+                    <button id="prev"> < </button>
+                    <!-- Bouton pour passer à la diapositive suivante -->
+                    <button id="next"> > </button>
+                </div>
+                <!-- Conteneur pour les points de navigation -->
+                <div class="carousel-dots"></div>
+            </div>
+        </div>
+
+        <!-- Script JavaScript pour le carrousel -->
+        <script>
+            // Fonction anonyme auto-exécutante (IIFE) pour éviter les conflits de noms
+            (function () {
+                "use strict"; // Mode strict JavaScript pour une meilleure gestion des erreurs
+
+                // ... (le reste du script)
+            })();
+        </script>
+
+        <!-- Informations sur le produit -->
+        <div class="product-info">
+            <h1>Brown Lipstick Vivide</h1><br><br>
+            <p>
+                <!-- Description du produit -->
+            </p>
+            <p>Price : 19.99 €</p>
+
+            <!-- Boutons de sélection et quantité -->
+            <div class="buttons">
+                <!-- ... (le reste du code pour les boutons) -->
+            </div>
+
+            <!-- Bouton "Ajouter au panier" -->
+            <div class="button1">
+                <span class="add-to-cart">
+                    <img src="images/seo-social-web-network-internet_276_icon-icons.com_61503.png" alt="">
+                    Add to cart
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <!-- Pied de page -->
+    <footer>
+        <!-- Section d'inscription à la newsletter -->
+        <div class="newsletter-section">
+            <!-- ... (le reste du code pour la section newsletter) -->
+        </div>
+
+        <!-- Navigation du pied de page -->
+        <div class="footer-navigation">
+            <!-- ... (le reste du code pour la navigation) -->
+        </div>
+    </footer>

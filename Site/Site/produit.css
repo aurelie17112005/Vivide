@@ -1,0 +1,432 @@
+/* Réinitialisation de certaines valeurs par défaut */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 600;
+}
+
+p, li {
+    font-family: 'Public Sans', sans-serif;
+}
+
+.menu {
+    background-color: #000;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 20px;
+    transition: transform 0.3s; /* Ajout de la transition */
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #333;
+}
+
+.menu li:hover {
+    transform: scale(1.1); /* Zoom de 10% lors du survol */
+}
+
+
+
+
+
+/* Conteneur principal */
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    flex-wrap: wrap;
+    padding: 50px;
+    max-width: 80%;
+}
+
+/* Conteneur de l'image */
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+/* Définition d'un container pour gérer l'affichage */
+.container {
+    overflow: hidden;
+    max-width: 100%;
+    display: flex;
+}
+
+.product {
+    align-items: flex-start;
+}
+
+/* Définition du carousel */
+.carousel {
+    position: relative;
+    width: 556px;
+    /* Le carousel est positionné relativement à son parent */
+    max-width: 100%;
+    margin-right: 50px;
+}
+
+/* Définition de l'élément contenant les diapositives */
+.carousel-inner {
+    display: flex;
+    /* Affiche les éléments en ligne */
+    overflow: hidden;
+    /* Cache les éléments qui dépassent */
+    height: 100vh;
+    /* Hauteur égale à 100% de la hauteur de la vue */
+    flex-wrap: nowrap;
+    /* Empêche les éléments de se placer sur plusieurs lignes */
+}
+
+/* Définition des diapositives */
+.slide {
+    flex: 0 0 100%;
+    /* Largeur de chaque diapositive est de 100% */
+    height: 100%;
+    /* Hauteur de chaque diapositive est de 100% */
+    transition: .5s ease-in-out;
+    /* Ajout d'une animation douce pour la transition entre les diapositives */
+}
+
+/* Définition de l'affichage de l'image de chaque diapositive */
+.slide img {
+    width: 560px;
+    /* Largeur de l'image est de 100% */
+    height: 700px;
+    /* Hauteur de l'image est de 100% */
+}
+
+/* Définition des boutons de contrôle du carousel */
+.carousel-controls {
+    position: absolute;
+    /* Les boutons sont absolument positionnés */
+    z-index: 5;
+    /* Ils sont placés au-dessus des autres éléments */
+    left: 10%;
+    /* La distance à gauche est de 10% */
+    right: 10%;
+    /* La distance à droite est de 10% */
+    top: 50%;
+    /* La distance du haut est de 50% */
+    display: flex;
+    /* Affiche les boutons en ligne */
+    justify-content: space-between;
+    /* Espacement égal entre les boutons */
+}
+
+/* Style des boutons de contrôle */
+.carousel-controls button {
+    padding: 10px;
+    /* Ajout de padding pour un meilleur contrôle */
+    background-color: #605c5c;
+    color: white;
+    border-radius: 20px;
+    border-color: #fff;
+    width: 40px;
+    height: 40px;
+    border: 1px;
+    font-size: 20px;
+
+}
+
+/* Définition des points de contrôle */
+.carousel-dots {
+    position: absolute;
+    /* Les points sont absolument positionnés */
+    z-index: 5;
+    /* Ils sont placés au-dessus des autres éléments */
+    left: 50%;
+    /* La distance à gauche est de 50% */
+    right: 50%;
+    /* La distance à droite est de 50% */
+    bottom: 10%;
+    /*La distance du bas est de 10% */
+    display: flex;
+    /* Affiche les points en ligne */
+    justify-content: center;
+    /* Centrage des points */
+    opacity: 0.5;
+}
+
+/* Style des points de contrôle */
+.carousel-dots .dot {
+    border-radius: 50%;
+    /* Les points sont en forme de cercle */
+    margin: 5px;
+    /* Ajout d'un margin pour un meilleur contrôle */
+    cursor: pointer;
+    /* Curseur en forme de main pour un meilleur contrôle */
+}
+
+/* Styles pour les points de navigation du carrousel */
+.carousel-dots .active {
+    /* Border de 10px pour le point actif */
+    border: 5px solid #f0eded !important;
+    /* !important permet de surcharger les autres styles éventuels */
+}
+
+.carousel-dots .inactive {
+    /* Border de 10px pour les points inactifs */
+    border: 5px solid #c89090;}
+
+/* Conteneur des informations du produit */
+.product-info {
+    max-width: 400px;
+    flex: 1;
+}
+
+/* Titre du produit */
+.product h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Description du produit */
+.product p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Prix du produit */
+.product p.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Boutons de sélection */
+.buttons_type1 button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.buttons_type1 button :hover{
+        transform: scale(1.1); /* Zoom de 10% lors du survol */
+    }
+
+
+/* Bouton d'ajout au panier */
+
+    .slide select,
+.slide button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.slide select {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.product span:hover {
+    transform: scale(1.1); /* Zoom de 10% lors du survol */
+}
+
+
+/* Ajouter un peu d'espace entre les éléments */
+.product h1, .product p, .buttons button {
+    margin-right: 20px;
+}
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.product-info {
+    width: 65%;
+    flex: 1;
+}
+.product h1, .product p {
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.button1{
+    height: 50px;
+    width: 157px;
+    background-color: rgb(237, 237, 241);
+    border: outset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2F2F2F;
+    box-shadow: 0px, 5px, 10px;
+    margin-right: 60px;
+
+}
+.button1 span{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+cursor: pointer;
+}
+.button1 span.num{
+    pointer-events: none;
+}
+.button2 select{
+    height: 55px;
+    width: 157px;
+    background-color: rgb(237, 237, 241);
+    border: outset;
+    color: #2F2F2F;
+    box-shadow: 0px, 5px, 10px;
+    text-align: center;
+    font-size: 15px;
+}
+.button2{
+    display: flex;
+}
+.add-to-cart img{
+    width: 20px;
+    height: 20px;
+}
+.button2 button{
+    height: 55px;
+    width: 157px;
+    background-color: #FFFF;
+    border: outset;
+    color: #2F2F2F;
+    box-shadow: 0px, 5px, 10px;
+}
+.buttons{
+    display: flex;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.newsletter-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.newsletter-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.newsletter-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.newsletter-section input[type="email"] {
+    flex: 1; /* permet à l'input de prendre tout l'espace disponible */
+    border: none; /*retire la bordure initiale de l'input */
+    padding: 10px;
+    border-radius: 0;
+    background-color: #f5f5f5;
+}
+
+.newsletter-section button {
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 0;
+    background-color: #f5f5f5;
+}
+
+.footer-navigation {
+    display: flex;
+    flex: 3;
+    justify-content: space-between;
+}
+
+.nav-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.nav-section h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.nav-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-section li {
+    margin-bottom: 8px;
+}
+
+.nav-section li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-section li a:hover {
+    color: #007BFF;
+}
+
+.email-input-group {
+    display: flex;
+    border: 2px solid #ccc; /*bordure carrée autour de l'ensemble*/
+    border-radius: 0; /*bordure carrée*/
+    overflow: hidden; /*permet de garantir que les éléments internes ne dépassent pas */
+}
+
+
+@media (max-width: 767px) {
+    footer {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .carousel {
+    position: ;
+    }
+}
