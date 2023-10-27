@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nom du Produit</title>
+    <link rel="stylesheet" href="produit.css">
+    <script src="header.js" defer></script>
+<link rel="stylesheet" type="text/css" href="header.css">
+</head>
+<body>
+    <div id="header"></div>
+<div class="product">
+            <div class="container">
+                <!-- Élément carrousel -->
+                <div class="carousel">
+                    <!-- Conteneur interne pour les diapositives -->
+                    <div class="carousel-inner">
+                        <!-- Première diapositive -->
+                        <div class="slide">
+                            <!-- Image de la première diapositive -->
+                            <img src="images/image_1.png"
+                                alt="Image 1">
+                        </div>
+                        <!-- Deuxième diapositive -->
+                        <div class="slide">
+                            <!-- Image de la deuxième diapositive -->
+                            <img src="images/carousel-1.webp"
+                                alt="Image 2">
+                        </div>
+                        <!-- Troisième diapositive -->
+                        <div class="slide">
+                            <!-- Image de la troisième diapositive -->
+                            <img src="images/carousel-4.jpg"
+                                alt="Image 3">
+                        </div>
+                        <!-- Quatrième diapositive -->
+                        <div class="slide">
+                            <!-- Image de la quatrième diapositive -->
+                            <img src="images/carousel-5.jpg"
+                                alt="Image 4">
+                        </div>
+                        <!-- Cinquième diapositive -->
+                        <div class="slide">
+                            <!-- Image de la cinquième diapositive -->
+                            <img src="images/carousel-3.jpg"
+                                alt="Image 5">
+                        </div>
+                    </div>
+                    <!-- Conteneur pour les boutons de navigation -->
+                    <div class="carousel-controls">
+                        <!-- Bouton pour passer à la diapositive précédente -->
+                        <button id="prev"> < </button>
+                        <!-- Bouton pour passer à la diapositive suivante -->
+                        <button id="next"> > </button>
+                    </div>
+                    <!-- Conteneur pour les points de navigation -->
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+            <script>
+            (function () {
+            // Utilisation de la directive "use strict" pour activer le mode strict en JavaScript
+            // Cela implique une meilleure gestion des erreurs et une syntaxe plus stricte pour le code
+            "use stict"
+        
+            // Déclare la constante pour la durée de chaque slide
+            const slideTimeout = 5000;
+        
+            // Récupère les boutons de navigation
+            const prev = document.querySelector('#prev');
+            const next = document.querySelector('#next');
+        
+            // Récupère tous les éléments de type "slide"
+            const $slides = document.querySelectorAll('.slide');
+        
+            // Initialisation de la variable pour les "dots"
+            let $dots;
+        
+            // Initialisation de la variable pour l'intervalle d'affichage des slides
+            let intervalId;
+        
+            // Initialisation du slide courant à 1
+            let currentSlide = 1;
+        
+            // Fonction pour afficher un slide spécifique en utilisant un index
+            function slideTo(index) {
+                // Vérifie si l'index est valide (compris entre 0 et le nombre de slides - 1)
+                currentSlide = index >= $slides.length || index < 1 ? 0 : index;
+        
+                // Boucle sur tous les éléments de type "slide" pour les déplacer
+                $slides.forEach($elt => $elt.style.transform = `translateX(-${currentSlide * 100}%)`);
+        
+                // Boucle sur tous les "dots" pour mettre à jour la couleur par la classe "active" ou "inactive"
+                $dots.forEach(($elt, key) => $elt.classList = `dot ${key === currentSlide? 'active': 'inactive'}`);
+            }
+        
+            // Fonction pour afficher le prochain slide
+            function showSlide() {
+                slideTo(currentSlide);
+                currentSlide++;
+            }
+        
+            // Boucle pour créer les "dots" en fonction du nombre de slides
+            for (let i = 1; i <= $slides.length; i++) {
+                let dotClass = i == currentSlide ? 'active' : 'inactive';
+                let $dot = `<span data-slidId="${i}" class="dot ${dotClass}"></span>`;
+                document.querySelector('.carousel-dots').innerHTML += $dot;
+            }
+        
+            // Récupère tous les "dots"
+            $dots = document.querySelectorAll('.dot');
+        
+            // Boucle pour ajouter des écouteurs d'événement "click" sur chaque "dot"
+            $dots.forEach(($elt, key) => $elt.addEventListener('click', () => slideTo(key)));
+        
+            // Ajout d'un écouteur d'événement "click" sur le bouton "prev" pour afficher le slide précédent
+            prev.addEventListener('click', () => slideTo(--currentSlide))
+        
+            // Ajout d'un écouteur d'événement "click" sur le bouton "next" pour afficher le slide suivant
+            next.addEventListener('click', () => slideTo(++currentSlide))
+        
+            // Initialisation de l'intervalle pour afficher les slides
+            intervalId = setInterval(showSlide, slideTimeout)
+            // Boucle sur tous les éléments de type "slide" pour ajouter des écouteurs d'événement pour les interactions avec la souris et le toucher
+            $slides.forEach($elt => {
+                let startX;
+                let endX;
+                // Efface l'intervalle d'affichage des slides lorsque la souris passe sur un slide
+                $elt.addEventListener('mouseover', () => {
+                    clearInterval(intervalId);
+                }, false)
+                // Réinitialise l'intervalle d'affichage des slides lorsque la souris sort d'un slide
+                $elt.addEventListener('mouseout', () => {
+                    intervalId = setInterval(showSlide, slideTimeout);
+                }, false);
+                // Enregistre la position initiale du toucher lorsque l'utilisateur touche un slide
+                $elt.addEventListener('touchstart', (event) => {
+                    startX = event.touches[0].clientX;
+                });
+                // Enregistre la position finale du toucher lorsque l'utilisateur relâche son doigt
+                $elt.addEventListener('touchend', (event) => {
+                    endX = event.changedTouches[0].clientX;
+                    // Si la position initiale est plus grande que la position finale, affiche le prochain slide
+                    if (startX > endX) {
+                        slideTo(currentSlide + 1);
+                        // Si la position initiale est plus petite que la position finale, affiche le slide précédent
+                    } else if (startX < endX) {
+                        slideTo(currentSlide - 1);
+                    }
+                });
+            })
+        })()
+
+            </script>
+        <div class="product-info">
+            <h1>Brown Lipstick Vivide</h1><br><br>
+            <p>The essential accessory to enhance your smile. Its soft and creamy texture glides delicately onto your lips, providing precise application and long-lasting wear. Available in a trendy range of shades, this versatile pencil allows you to redefine your lips with rich color and a flawless matte finish. Add a touch of sophistication to your beauty routine with this lip pencil that combines elegance and performance."
+
+            </p>
+            <p>Price : 19.99 €</p>
+            <div class="buttons">
+            <div class="button1">
+    <span class="minus">-</span>
+    <span class="num">01</span>
+    <span class="plus">+</span>
+</div>
+<script>
+    const plus =document.querySelector(".plus"),
+minus =document.querySelector(".minus"),
+num =document.querySelector(".num");
+
+let a=1;
+plus.addEventListener("click", ()=>{
+a++;
+console.log(a);
+a=(a<10 )? "0" +a :a;
+num.innerText = a;
+})
+minus.addEventListener("click", ()=>{
+a--;
+console.log(a);
+a=(a<10 )? "0" +a :a;
+num.innerText = a});
+</script>
+
+
+<div class="button2">
+    <select name="Couleur" id="Taille">
+    <option value="M">Noir</option>
+    <option value="L">Bleu</option>
+    <option value="XL">Rose</option>
+    <option value="XXL">Magenta</option>
+    </select>
+</div><br><br><br><br><br>
+        </div>
+        <div class="button1">
+        <span class="add-to-cart">
+            <img src="images/seo-social-web-network-internet_276_icon-icons.com_61503.png" alt="">
+            Add to cart</span>
+        </div>
+        </div>
+        </div>
+    </div>
+    <br><br><br>
+    <footer>
+        <div class="newsletter-section">
+            <h2>Sign up for our newsletter</h2>
+            <p>Be the first to know about our special offers, new product launches, and events</p>
+            <div class="email-input-group">
+                <input type="email" placeholder="Email Address">
+                <button>Sign Up</button>
+            </div>
+        </div>
+
+        <div class="footer-navigation">
+            <div class="nav-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">Women's</a></li>
+                    <li><a href="#">Men's</a></li>
+                    <li><a href="#">Kids'</a></li>
+                    <li><a href="#">Shoes</a></li>
+                    <li><a href="#">Equipment</a></li>
+                    <li><a href="#">By Activity</a></li>
+                    <li><a href="#">Gift Cards</a></li>
+                    <li><a href="#">Sale</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Order Status</a></li>
+                    <li><a href="#">Size Chart</a></li>
+                    <li><a href="#">Returns & Warranty</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Responsibility</a></li>
+                    <li><a href="#">Technology & Innovation</a></li>
+                    <li><a href="#">Explore our stories</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
